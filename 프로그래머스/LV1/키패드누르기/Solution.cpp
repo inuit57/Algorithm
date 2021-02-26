@@ -12,6 +12,9 @@ string solution(vector<int> numbers, string hand) {
     right = 12; 
     
     for(int i = 0 ; i< numbers.size() ; i++){
+        
+        if( numbers[i] == 0 ) numbers[i] = 11; // 0을 11로 바꿔준다. 미리. 
+        
         if(left == numbers[i]){ //이미 그 숫자인 경우. 
             answer += 'L' ;
             continue; 
@@ -24,7 +27,7 @@ string solution(vector<int> numbers, string hand) {
                 answer += 'L' ; 
                 left = numbers[i] ; //위치는 숫자 값으로 기록.
             }
-            else if (( numbers[i] % 3 == 0) && ( numbers[i]!= 0)){
+            else if (( numbers[i] % 3 == 0)){ // && ( numbers[i]!= 0)){
                 answer += 'R' ; 
                 right = numbers[i] ; 
             }
@@ -36,8 +39,9 @@ string solution(vector<int> numbers, string hand) {
                 int l_chk , r_chk; 
                 l_chk = r_chk = 999; //혹시 모르니까 초기화. 
     
-                if( numbers[i] == 0 ) numbers[i] = 11; 
+                //if( numbers[i] == 0 ) numbers[i] = 11; 
                 
+                /*
                 //left 처리
                 if(left > numbers[i]){
                     l_chk = left - numbers[i] ; 
@@ -84,22 +88,8 @@ string solution(vector<int> numbers, string hand) {
                 }else{
                     r_chk %= 3; 
                 }
-                /*
-                //left 계산.
-                if(left%3 != 2){
-                    l_chk = left/3  +1 ; 
-                }else{
-                    l_chk = left/3 - 1 ; 
-                }
-                //right 계산. 
-                if(right % 3 != 2){
-                    r_chk = right/ 3; 
-                }else{
-                    r_chk = right/3 -1 ; 
-                }
-                
-                
-    
+                */
+               
                 switch(numbers[i]){
                     case 2: 
                         // 거리 1 : L(1), M(5), R(3) 
@@ -107,7 +97,45 @@ string solution(vector<int> numbers, string hand) {
                         // 거리 3 : L(7), M(11,), R(9)
                         // 거리 4 : L(10) , R(12) 
                         
-                        // 나누기 3을 하면 대충 견적이 나오나.                                      
+                        switch(left){
+                            case 1:
+                            case 5:
+                                l_chk = 1; break;
+                            case 4:
+                            case 8:
+                                l_chk = 2; break;
+                            case 7:
+                            case 11:
+                                l_chk = 3; break;
+                            case 10:
+                                l_chk = 4; break;
+                        }
+                        switch(right){
+                            case 5:
+                            case 3: 
+                                r_chk = 1 ; break;
+                            case 6:
+                            case 8 :
+                                r_chk = 2 ; break;
+                            case 11:
+                            case 9 : 
+                                r_chk = 3; break;
+                            case 12 :
+                                r_chk = 4; break;
+                        }
+                        
+                        //left 계산.
+                        // if(left%3 != 2){
+                        //     l_chk = left/3  +1 ; 
+                        // }else{
+                        //     l_chk = left/3 - 1 ; 
+                        // }
+                        // //right 계산. 
+                        // if(right % 3 != 2){
+                        //     r_chk = right/ 3; 
+                        // }else{
+                        //     r_chk = right/3 -1 ; 
+                        // }
                         break; // 따로 여기에서 작업칠 거는 없다.                       
                         
                     case 5:
@@ -115,43 +143,126 @@ string solution(vector<int> numbers, string hand) {
                         // 거리 2 : L(1), L(7), M(11), R(3), R(9)
                         // 거리 3 : L(10) , R(12) 
                         
-                        // 1, 3 -> 2 
-                        // 2 -> 1
-                        // 4 -> 3... 
-                        
-                        l_chk --; 
-                        r_chk --; 
-                        
-                        if(l_chk == 0) l_chk =2; 
-                        if(r_chk == 0) r_chk =2; 
+                        switch(left){
+                            case 4:
+                            case 2:
+                            case 8:
+                                l_chk =1; 
+                                break;
+                            case 1:
+                            case 7:
+                            case 11:
+                                l_chk = 2; 
+                                break;
+                            case 10 :
+                                l_chk = 3;
+                                break;
+                        }
+                        switch(right){
+                            case 2:
+                            case 8 :
+                            case 6:
+                                r_chk = 1;
+                                break;
+                            case 11:
+                            case 3:
+                            case 9:
+                                r_chk = 2;
+                                break;
+                            case 12 :
+                                r_chk = 3; 
+                                break;
+                        }
                         break; 
                     case 8:
                         //거리 1 : L(7), M(5),M(11), R(9)
                         //거리 2 : L(4),L(10), M(2), R(6),R(12) 
                         //거리 3 : L(1), R(3)     
-                        
-                        //조금 다르다. 
-
-                    case 0:
+                       
+                        // printf("left :%d\n",left); 
+                        // printf("right :%d\n", right);
+                       
+                        switch(left){
+                            case 7:
+                            case 5:
+                            case 11:
+                                l_chk = 1;
+                                break;
+                            case 4:
+                            case 10:
+                            case 2:
+                                l_chk = 2;
+                                break;
+                            case 1:
+                                l_chk = 3; 
+                                break;
+                        }
+                        switch(right){
+                            case 5:
+                            case 11:
+                            case 9 :
+                                r_chk = 1;
+                                break;
+                            case 2:
+                            case 6:
+                            case 12:
+                                r_chk = 2; 
+                                break;
+                            case 3:
+                                r_chk = 3; 
+                                break; 
+                        }
+                        break;
+                    case 11: // 0 일 때. 
                         //거리 1 : L(11) ,M(8),  R(12) 
                         //거리 2 : L(7), M(5), R(9) 
                         //거리 3 : L(4), M(2), R(6) 
                         //거리 4 : L(1) , R(3) 
 
-                        //left = 11; 
-                        //right = 11; 
-                        numbers[i] =11; 
+//                         printf("left :%d\n",left); 
+//                         printf("right :%d\n", right);
                         
+                        switch(left){
+                            case 11:
+                            case 8:
+                                l_chk = 1;break;
+                            case 7:
+                            case 5:
+                                l_chk = 2; break;
+                            case 4:
+                            case 2:
+                                l_chk = 3; break;
+                            case 1:
+                                l_chk = 1; 
+                                break;
+                        }
+                        switch(right){
+                            case 8:
+                            case 12:
+                                r_chk = 1; break;
+                            case 5:
+                            case 9 :
+                                r_chk = 2; break;
+                            case 2:
+                            case 6 : 
+                                r_chk = 3; break;
+                            case 3:
+                                r_chk = 4; break; 
+                        }
+                        break;
                 } // 케이스 문 끝. 
-                */ 
+                
+                
+                
                 if(l_chk == r_chk){
+                    
                     if(hand == "left") {
                       answer +="L"; 
-                        left = numbers[i];
+                      left = numbers[i];
                     }
                     else{
                       answer +="R";   
-                        right = numbers[i]; 
+                      right = numbers[i]; 
                     } 
                 }else if( l_chk > r_chk){
                     answer += "R"; 
