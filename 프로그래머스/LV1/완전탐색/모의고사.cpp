@@ -34,7 +34,7 @@ vector<int> solution(vector<int> answers) {
     
     
     for(int i= 0 ; i< answers.size() ; i++){
-        if(answers[i] == i+1){
+        if(answers[i] == ((i%5)+1) ){
             a++; 
         }
         
