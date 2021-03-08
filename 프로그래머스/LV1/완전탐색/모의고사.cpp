@@ -1,6 +1,5 @@
 // https://programmers.co.kr/learn/courses/30/lessons/42840
 // signal: illegal instruction (core dumped) 에러가 b, c 를 건드리려고 하면 난다. 
-// 뭐가 문제인 건지 좀 살펴볼 필요가 있을 거 같다. 
 #include <string>
 #include <vector>
 
@@ -77,14 +76,14 @@ vector<int> solution(vector<int> answers) {
 
     } // for문 끝.
 
-    printf("%d %d %d\n", a,b,c);
+ //   printf("%d %d %d\n", a,b,c);
     
     
 //     answer.push_back(a); 
 //     answer.push_back(b); 
 //     answer.push_back(c); 
     
-    /*
+    
     // 3항 연산자로 굴려야하나. 
     // 다 같은 경우의 처리가..
     if ( a > b){
@@ -109,11 +108,15 @@ vector<int> solution(vector<int> answers) {
         if ( a > c){
             answer.push_back(1); 
             answer.push_back(2); 
+        }else if (a < c){
+            answer.push_back(3); 
         }else{
+            answer.push_back(1); 
+            answer.push_back(2); 
             answer.push_back(3); 
         }
         
     }
-    */
+    
     return answer;
 }
