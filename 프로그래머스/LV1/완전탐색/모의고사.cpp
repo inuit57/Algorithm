@@ -14,6 +14,8 @@ vector<int> solution(vector<int> answers) {
     int b = 0 ; 
     int c = 0 ; 
     
+    int tmp = 0 ; 
+    
     // 1번 : answer[i] == (i%5)+1 이라면 정답
     // 2번 : i가 짝수일 때 (i%2) == 0 일 때 answer[i]==2라면 정답
     // 0 1 2 3 4 5 6 7 | 8  9  10  11  12  13 
@@ -32,8 +34,14 @@ vector<int> solution(vector<int> answers) {
     // 3 3 1 1 2 2 4 4 5 5 | 3 
     // 10으로 나누면 될 것으로 보여진다. 
     
+    switch(answers[0]){
+        case 1: a++; break;
+        case 2: b++; break;
+        case 3: c++; break; 
+    }
     
-    for(int i= 0 ; i< answers.size() ; i++){
+    for(int i= 1 ; i< answers.size() ; i++){
+        
         if(answers[i] == ((i%5)+1) ){
             a++; 
         }
@@ -43,43 +51,39 @@ vector<int> solution(vector<int> answers) {
                 b++;
             }
         }else{
-            switch(i%8){
-                case 1:
-                    if(answer[i] == 1) b++; break;
-                case 3:
-                    if(answer[i] == 3) b++; break;
-                case 5:
-                    if(answer[i] == 4) b++; break;
-                case 7:
-                    if(answer[i] == 5) b++; break;
-                
-            }
+           if(i%8 == 1){
+               if(answers[i] == 1) b++; 
+           }else if(i%8 == 3){
+               if(answers[i] == 3) b++;
+               
+           }else if(i%8 == 5){
+               if(answers[i] == 4) b++; 
+           }else if(i%8 == 7){
+               if(answers[i] == 5) b++; 
+           }        
         }// b 끝
-    
-        switch(i%10){
-            case 0:
-            case 1:
-                if(answer[i] == 3) c++; break;
-            case 2:
-            case 3:
-                if(answer[i] == 1) c++; break;
-            case 4:
-            case 5:
-                if(answer[i] == 2) c++; break;
-            case 6:
-            case 7:
-                if(answer[i] == 4) c++; break;
-            case 8:
-            case 9:
+        
+        tmp = i %10 ;
+        if( tmp < 2){
+             if(answer[i] == 3) c++; 
+        }else if(tmp < 4){
+                if(answer[i] == 1) c++; 
+        }else if (tmp <6 ){
+                if(answer[i] == 2) c++; 
+        }else if(tmp <8){
+                if(answer[i] == 4) c++; 
+        }else{
                 if(answer[i] == 5) c++; break;
         }
-        printf("%d %d %d\n", a,b,c); 
+
     } // for문 끝.
 
+    printf("%d %d %d\n", a,b,c);
     
-    // answer.push_back(a); 
-    // answer.push_back(b); 
-    // answer.push_back(c); 
+    
+//     answer.push_back(a); 
+//     answer.push_back(b); 
+//     answer.push_back(c); 
     
     /*
     // 3항 연산자로 굴려야하나. 
