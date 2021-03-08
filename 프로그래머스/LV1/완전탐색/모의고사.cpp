@@ -1,7 +1,6 @@
 // https://programmers.co.kr/learn/courses/30/lessons/42840
 // signal: illegal instruction (core dumped) 에러가 b, c 를 건드리려고 하면 난다. 
 // 뭐가 문제인 건지 좀 살펴볼 필요가 있을 거 같다. 
-
 #include <string>
 #include <vector>
 
@@ -65,15 +64,15 @@ vector<int> solution(vector<int> answers) {
         
         tmp = i %10 ;
         if( tmp < 2){
-             if(answer[i] == 3) c++; 
+             if(answers[i] == 3) c++; 
         }else if(tmp < 4){
-                if(answer[i] == 1) c++; 
+                if(answers[i] == 1) c++; 
         }else if (tmp <6 ){
-                if(answer[i] == 2) c++; 
+                if(answers[i] == 2) c++; 
         }else if(tmp <8){
-                if(answer[i] == 4) c++; 
+                if(answers[i] == 4) c++; 
         }else{
-                if(answer[i] == 5) c++; break;
+                if(answers[i] == 5) c++; break;
         }
 
     } // for문 끝.
