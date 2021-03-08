@@ -76,13 +76,6 @@ vector<int> solution(vector<int> answers) {
 
     } // for문 끝.
 
- //   printf("%d %d %d\n", a,b,c);
-    
-    
-//     answer.push_back(a); 
-//     answer.push_back(b); 
-//     answer.push_back(c); 
-    
     
     // 3항 연산자로 굴려야하나. 
     // 다 같은 경우의 처리가..
