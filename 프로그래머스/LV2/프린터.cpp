@@ -1,5 +1,4 @@
 // https://programmers.co.kr/learn/courses/30/lessons/42587#
-// 정확성 75점 나온다. 어디가 문제일까. 
 
 #include <string>
 #include <vector>
