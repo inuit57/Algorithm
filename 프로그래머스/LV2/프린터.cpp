@@ -14,9 +14,10 @@ int solution(vector<int> priorities, int location) {
     int max = *max_element(priorities.begin(), priorities.end()); 
     int backup = 0 ; 
     
-    if(priorities[location] == max){
-        return cnt ; 
-    }    
+    
+    // if(priorities[location] == max){
+    //     return cnt ; 
+    // }    -> 숫자가 모두 동일하게 입력된 경우에 제대로된 결과를 안 내놓는다. 
     
     while(!priorities.empty()){
         max = *max_element(priorities.begin(), priorities.end()); 
