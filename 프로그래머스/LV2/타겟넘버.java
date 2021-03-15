@@ -1,3 +1,5 @@
+//https://programmers.co.kr/learn/courses/30/lessons/43165
+
 class Solution {
     public int check(int[] numbers,int index, int target, int sum  ){ 
       //바보같이 여기에서 index == number.length-1 을 검사하고 + 시킨 결과를 비교해서 -시킨 결과를 안 더해줘서 결과가 다르게 나왔다. 
