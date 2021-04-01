@@ -1,7 +1,6 @@
 #include<iostream>
 #include<vector>
 #include<stdio.h>
-#include<algorithm>
 
 using namespace std; 
 
@@ -10,7 +9,7 @@ int check[10] = {0} ;
 int arr[10] ;  
 
 int MAX ; 
-void d(int num , long sum){
+void d(int num ){
 
     if ( num >= n ){
         //print.. 
@@ -32,9 +31,9 @@ void d(int num , long sum){
         return ;  
     } else{
         check[num] = 1 ; 
-        d(num+1 , sum + arr[num]) ; 
+        d(num+1 ) ; 
         check[num] = 0 ; 
-        d(num+1 , sum); 
+        d(num+1 ); 
     }
 
 }
@@ -46,8 +45,7 @@ int main(){
         cin >> arr[i] ; 
     }
 
-    //long sum = 0 ; 
-    d( 0  , 0 ); 
+    d( 0  ); 
     
     if (MAX > 0 ) {
         printf("YES"); 
