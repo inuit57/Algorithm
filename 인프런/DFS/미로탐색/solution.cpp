@@ -57,9 +57,10 @@ int main(){
         }
     }
 
+    maze[0][0] = 1;  // 이거를 안해줘서 결과가 2배로 나왔다. 
     dfs(0,0) ; 
 
-    printf("%d", cnt/2); 
+    printf("%d", cnt); 
 }
 
 
