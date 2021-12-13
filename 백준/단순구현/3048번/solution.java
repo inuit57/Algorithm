@@ -32,7 +32,6 @@ public class Main {
 		StringBuilder answer = ant_1.reverse().append(ant_2);
 		
 		char[] ch_arr = answer.toString().toCharArray(); 
-		System.out.println(ch_arr);
 		char ch_swap ; 
 		
 		ant_2 = ant_2.insert(0, '+'); 
