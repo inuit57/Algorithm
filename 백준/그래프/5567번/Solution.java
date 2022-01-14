@@ -25,7 +25,7 @@ public class Main {
     private static int visits[] ; 
     public static void dfs(int next , int depth) {
     
-    	if( depth == 2 || visits[next] == 1) return ; 
+    	if( depth == 2 ) return ; 
     	for(int i =0 ; i < N ; i++) {
     		if( map[next][i] == 1) {    		
     			visits[i] = 1;
@@ -45,7 +45,6 @@ public class Main {
 		map = new int[N][N];
 		visits = new int[N] ; 
 		
-    visits[0] = 1; 
     
 		for(int i= 0 ; i< M ; i++) {
 			st = new StringTokenizer(br.readLine());
@@ -61,8 +60,6 @@ public class Main {
 		int answer = 0; 
 		for(int i =1 ; i < N ; i++) {
 			answer += visits[i]; 
-			
-			//if( visits[i] > 0) System.out.println("visist: " + (i+1));
 		}
 		
 		System.out.println(answer);
