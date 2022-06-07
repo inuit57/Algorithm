@@ -27,14 +27,14 @@ solution(int[] arr, int n){
   int min, max, mid ; 
   
   // min, max 값 설정 
-  while( min < max ) { 
+  while( min <= max ) { 
     mid = (min+max)/2 ; 
     if( check( arr, mid ) ) { 
       // 결과가 참인 경우
       answer = mid
       // mid 가 우리가 찾으려는 해답값이 된다. 
       
-      max = mid; 
+      max = mid -1; 
       // 최댓값인지 최솟값인지에 따라 설정값이 달라진다. 
     }else{
       min = mid+1 ; 
