@@ -20,6 +20,34 @@
 - 일반적으로는 min = mid+1 , max = mid 로 값을 변동시킨다. 
 ```
 
+## 구현 예시 
+```java
+solution(int[] arr, int n){ 
+  int answer = Integer.MAX_VALUE ; // 또는 Integer.MIN_VALUE 
+  int min, max, mid ; 
+  
+  // min, max 값 설정 
+  while( min < max ) { 
+    mid = (min+max)/2 ; 
+    if( check( arr, mid ) ) { 
+      // 결과가 참인 경우
+      answer = Math.min( answer, mid) ; 
+      // 또는 Math.max( answer, mid ) ; 
+      // mid 가 우리가 찾으려는 해답값이 된다. 
+      
+      max = mid; 
+      // Math.min 인 경우, 즉 최솟값을 찾는 경우에는
+      // mid 의 값을 줄여나가기 위해서 max = mid 로 설정한다.
+      // 하지만 반대로 Math.max 인 경우에는 min=mid+1 로 설정해서
+      // mid 의 값을 점점 증가시켜서 최댓값을 찾을 수 있도록 해줘야 한다. 
+    }else{
+      min = mid+1 ; 
+    }
+  }
+}
+```
+
+
 ## 예시문제 
 - [뮤직비디오](https://cote.inflearn.com/contest/10/problem/06-09)
 - [랜선자르기](https://www.acmicpc.net/problem/1654) 
